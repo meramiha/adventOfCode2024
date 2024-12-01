@@ -19,3 +19,8 @@ fun String.md5() = BigInteger(1, MessageDigest.getInstance("MD5").digest(toByteA
  * The cleaner shorthand for printing output.
  */
 fun Any?.println() = println(this)
+
+
+fun <T, K> Pair<T, T>.map(foo: (T) -> K): Pair<K, K> = Pair(foo(first), foo(second))
+fun <T> Pair<T, T>.forEach(foo: (T) -> Unit): Pair<T, T> = also { foo(first); foo(second) }
+fun <T, K> Pair<List<T>, List<K>>.toListOfPairs(): List<Pair<T, K>> = first.zip(second)
